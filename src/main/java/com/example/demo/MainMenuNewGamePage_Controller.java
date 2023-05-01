@@ -2,6 +2,7 @@ package com.example.demo;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class MainMenuNewGamePage_Controller {
 
@@ -23,26 +24,36 @@ public class MainMenuNewGamePage_Controller {
 
     @FXML
     private void handleConnectFourButtonClick() {
-        // TODO handle this event
+        Stage stage = (Stage) connectFourButton.getScene().getWindow();
+        stage.close();
+        // TODO handle the rest of this event
     }
 
     @FXML
     private void handleTicTacToeButtonClick() {
-        // TODO handle this event
+        Stage stage = (Stage) ticTacToeButton.getScene().getWindow();
+        stage.close();
+        // TODO handle the rest of this event
     }
 
     @FXML
     private void handleRockPaperScissorsButtonClick() {
-        // TODO handle this event
+        Stage stage = (Stage) rockPaperScissorsButton.getScene().getWindow();
+        stage.close();
+        // TODO handle the rest of this event
     }
 
     @FXML
     private void handleTempButtonClick () {
-        // TODO handle this event
+        Stage stage = (Stage) tempButton.getScene().getWindow();
+        stage.close();
+        // TODO handle the rest of this event
     }
 
     @FXML
     private void handleGoBackButtonClick() {
-        // TODO handle this event
+        Stage stage = (Stage) goBackButton.getScene().getWindow();
+        stage.close();
+        // TODO handle the rest of this event
     }
 }

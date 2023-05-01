@@ -2,6 +2,7 @@ package com.example.demo;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class MainMenuInitialPage_Controller {
 
@@ -16,17 +17,23 @@ public class MainMenuInitialPage_Controller {
 
     @FXML
     private void handleNewGameButtonClick() {
-        // TODO Handle logic for new game button click
+        Stage stage = (Stage) NewGameButton.getScene().getWindow();
+        stage.close();
+        // TODO handle the rest of this event
     }
 
     @FXML
     private void handleLoadGameButtonClick() {
-        // TODO Handle logic for load game button click
+        Stage stage = (Stage) LoadGameButton.getScene().getWindow();
+        stage.close();
+        // TODO handle the rest of this event
     }
 
     @FXML
     private void handleHighScoreButtonClick() {
-        // TODO Handle logic for high score button click
+        Stage stage = (Stage) HighScoreButton.getScene().getWindow();
+        stage.close();
+        // TODO handle the rest of this event
     }
 
 }
