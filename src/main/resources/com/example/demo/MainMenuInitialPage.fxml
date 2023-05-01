@@ -16,8 +16,7 @@
             <Font size="77.0" />
          </font>
       </Text>
-      <Button fx:id="NewGameButton" layoutX="214.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleNewGameButtonClick" prefHeight="26.0" prefWidth="264.0" text="New Game" />
-      <Button fx:id="LoadGameButton" layoutX="214.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleLoadGameButtonClick" prefHeight="26.0" prefWidth="264.0" text="Load Game" />
+      <Button fx:id="NewGameButton" layoutX="214.0" layoutY="215.0" mnemonicParsing="false" onAction="#handleNewGameButtonClick" prefHeight="26.0" prefWidth="264.0" text="New Game" />
       <Button fx:id="HighScoreButton" layoutX="214.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleHighScoreButtonClick" prefHeight="26.0" prefWidth="264.0" text="High Scores" />
    </children>
 </AnchorPane>

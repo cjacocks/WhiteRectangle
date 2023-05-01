@@ -16,9 +16,6 @@ public class MainMenuInitialPage_Controller {
     private Button NewGameButton;
 
     @FXML
-    private Button LoadGameButton;
-
-    @FXML
     private Button HighScoreButton;
 
     @FXML
@@ -37,12 +34,6 @@ public class MainMenuInitialPage_Controller {
         }
     }
 
-    @FXML
-    private void handleLoadGameButtonClick() {
-        Stage stage = (Stage) LoadGameButton.getScene().getWindow();
-        stage.close();
-        // TODO handle the rest of this event
-    }
 
     @FXML
     private void handleHighScoreButtonClick() {
