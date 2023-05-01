@@ -13,8 +13,9 @@
       </Label>
       <Button fx:id="connectFourButton" layoutX="105.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleConnectFourButtonClick" prefHeight="26.0" prefWidth="160.0" text="Connect 4" />
       <Button fx:id="ticTacToeButton" layoutX="335.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleTicTacToeButtonClick" prefHeight="26.0" prefWidth="160.0" text="Tic Tac Toe" />
-      <Button fx:id="diceGameButton" layoutX="335.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleDiceGameButtonClick" prefHeight="26.0" prefWidth="160.0" text="Dice Game" />
-      <Button fx:id="rockPaperScissorsButton" layoutX="105.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleRockPaperScissorsButtonClick" prefHeight="26.0" prefWidth="160.0" text="Rock Paper Scissors" />
+      <Button fx:id="diceGameButton" layoutX="335.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleDiceGameButtonClick" prefHeight="26.0" prefWidth="160.0" text="Dice Game" />
+      <Button fx:id="rockPaperScissorsButton" layoutX="105.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleRockPaperScissorsButtonClick" prefHeight="26.0" prefWidth="160.0" text="Rock Paper Scissors" />
       <Button fx:id="goBackButton" layoutX="240.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleGoBackButtonClick" text="Back to Main Menu" />
+      <Button fx:id="decisionGameButton" layoutX="220.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleDecisionGameButtonClick" prefHeight="26.0" prefWidth="160.0" text="Decision Game" />
    </children>
 </AnchorPane>

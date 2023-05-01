@@ -26,6 +26,9 @@ public class MainMenuNewGamePage_Controller {
     @FXML
     private Button goBackButton;
 
+    @FXML
+    private Button decisionGameButton;
+
 
     @FXML
     private void handleConnectFourButtonClick() {
@@ -92,5 +95,13 @@ public class MainMenuNewGamePage_Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleDecisionGameButtonClick() {
+        Stage currentStage = (Stage) diceGameButton.getScene().getWindow();
+        currentStage.close();
+
+        // TODO - Make this launch game.
     }
 }
