@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,14 +28,17 @@ public class MainMenuNewGamePage_Controller {
     private Button goBackButton;
 
     @FXML
-    private Button decisionGameButton;
+    private Button memoryGameButton;
 
 
     @FXML
     private void handleConnectFourButtonClick() {
         Stage currentStage = (Stage) connectFourButton.getScene().getWindow();
         currentStage.close();
-        // TODO handle the rest of this event
+
+        Platform.runLater(() -> {
+            new Connect4Game().start(new Stage());
+        });
     }
 
     @FXML
@@ -98,10 +102,12 @@ public class MainMenuNewGamePage_Controller {
     }
 
     @FXML
-    private void handleDecisionGameButtonClick() {
-        Stage currentStage = (Stage) diceGameButton.getScene().getWindow();
+    private void handleMemoryGameButtonClick() {
+        Stage currentStage = (Stage) memoryGameButton.getScene().getWindow();
         currentStage.close();
 
-        // TODO - Make this launch game.
+        Platform.runLater(() -> {
+            new MemoryGame().start(new Stage());
+        });
     }
 }
