@@ -2,9 +2,14 @@ package com.example.demo;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class RockPaperScissorsGame_Controller {
@@ -40,16 +45,43 @@ public class RockPaperScissorsGame_Controller {
     @FXML
     private void handleRockButtonClick() {
         turnCalc(1);
+        if (playerScore >= 3) {
+            Stage stage = (Stage) rockButton.getScene().getWindow();
+            stage.close();
+            displayWin();
+        } else if (adversaryScore >= 3) {
+            Stage stage = (Stage) rockButton.getScene().getWindow();
+            stage.close();
+            displayLose();
+        }
     }
 
     @FXML
     private void handlePaperButtonClick() {
         turnCalc(2);
+        if (playerScore >= 3) {
+            Stage stage = (Stage) paperButton.getScene().getWindow();
+            stage.close();
+            displayWin();
+        } else if (adversaryScore >= 3) {
+            Stage stage = (Stage) paperButton.getScene().getWindow();
+            stage.close();
+            displayLose();
+        }
     }
 
     @FXML
     private void handleScissorsButtonClick() {
         turnCalc(3);
+        if (playerScore >= 3) {
+            Stage stage = (Stage) scissorsButton.getScene().getWindow();
+            stage.close();
+            displayWin();
+        } else if (adversaryScore >= 3) {
+            Stage stage = (Stage) scissorsButton.getScene().getWindow();
+            stage.close();
+            displayLose();
+        }
     }
 
     /*
@@ -117,7 +149,7 @@ public class RockPaperScissorsGame_Controller {
                 advMoveLabel.setText(finalTemp1);
             });
 
-            // TODO - Add victory Condition Check
+
 
         } else if (playerMove == 2 && advMove == 1) {
             System.out.println("WhiteRectangle: R.P.S.G.: The Player won this round");
@@ -129,7 +161,7 @@ public class RockPaperScissorsGame_Controller {
                 roundDisplayLabel.setText(String.valueOf(roundInt));
                 advMoveLabel.setText(finalTemp2);
             });
-            // TODO - Add victory Condition Check
+
 
         } else if (playerMove == 3 && advMove == 2) {
             System.out.println("WhiteRectangle: R.P.S.G.: The Player won this round");
@@ -141,7 +173,7 @@ public class RockPaperScissorsGame_Controller {
                 roundDisplayLabel.setText(String.valueOf(roundInt));
                 advMoveLabel.setText(finalTemp6);
             });
-            // TODO - Add victory Condition Check
+
 
         } else if (advMove == 1 && playerMove == 3) {
             System.out.println("WhiteRectangle: R.P.S.G.: The Adversary won this round");
@@ -154,7 +186,7 @@ public class RockPaperScissorsGame_Controller {
                 roundDisplayLabel.setText(String.valueOf(roundInt));
                 advMoveLabel.setText(finalTemp5);
             });
-            // TODO - Add victory Condition Check
+
 
         } else if (advMove == 2 && playerMove == 1) {
             System.out.println("WhiteRectangle: R.P.S.G.: The Adversary won this round");
@@ -167,7 +199,7 @@ public class RockPaperScissorsGame_Controller {
                 roundDisplayLabel.setText(String.valueOf(roundInt));
                 advMoveLabel.setText(finalTemp4);
             });
-            // TODO - Add victory Condition Check
+
 
         } else if (advMove == 3 && playerMove == 2) {
             System.out.println("WhiteRectangle: R.P.S.G.: The Adversary won this round");
@@ -181,7 +213,6 @@ public class RockPaperScissorsGame_Controller {
                 roundDisplayLabel.setText(String.valueOf(roundInt));
                 advMoveLabel.setText(finalTemp3);
             });
-            // TODO - Add victory Condition Check
 
         } else {
             // If this runs, physics broke. Mathematically speaking this shoudl be an impossible state
@@ -189,6 +220,28 @@ public class RockPaperScissorsGame_Controller {
             // In case of illegal moves, tuck your head between your legs and kiss your posterior goodbye
             // The end of days is probably near.
             System.out.println("Invalid move(s)");
+        }
+    }
+
+    private void displayWin() {
+        try {
+            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/RPSGPlayerWin.fxml"));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(newGamePage));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayLose() {
+        try {
+            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/RPSGPlayerLose.fxml"));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(newGamePage));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
