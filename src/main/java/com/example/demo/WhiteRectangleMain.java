@@ -14,15 +14,13 @@ public class WhiteRectangleMain extends Application {
 
     This class may not even be needed. TBD
      */
-
-    // TODO - Add New Game select page
     // TODO - Add Load Game select Page
     // TODO - Add View High Scores Game Select Page
 
     @Override
     public void start (Stage stage) throws IOException {
         System.out.println("WhiteRectangle: fxml loader start");
-        FXMLLoader fxmlLoader = new FXMLLoader(WhiteRectangleMain.class.getResource("MainMenuInitialPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WhiteRectangleMain.class.getResource("/com/example/demo/MainMenuInitialPage.fxml"));
         System.out.println("WhiteRectangle: load scene");
         Scene scene = new Scene(fxmlLoader.load());
         System.out.println("WhiteRectangle: set title");

@@ -17,7 +17,7 @@ public class MainMenuNewGamePage_Controller {
 
     // TODO Decide if adding a new game and rename this button constructor and assign fxid and event name.
     @FXML
-    private Button tempButton;
+    private Button diceGameButton;
 
     @FXML
     private Button goBackButton;
@@ -44,8 +44,8 @@ public class MainMenuNewGamePage_Controller {
     }
 
     @FXML
-    private void handleTempButtonClick () {
-        Stage stage = (Stage) tempButton.getScene().getWindow();
+    private void handleDiceGameButtonClick () {
+        Stage stage = (Stage) diceGameButton.getScene().getWindow();
         stage.close();
         // TODO handle the rest of this event
     }
