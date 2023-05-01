@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MainMenuNewGamePage_Controller">
+   <children>
+      <Label layoutX="185.0" layoutY="40.0" text="Start New Game">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="connectFourButton" layoutX="105.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleConnectFourButtonClick" prefHeight="26.0" prefWidth="160.0" text="Connect 4" />
+      <Button fx:id="ticTacToeButton" layoutX="335.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleTicTacToeButtonClick" prefHeight="26.0" prefWidth="160.0" text="Tic Tac Toe" />
+      <Button layoutX="335.0" layoutY="200.0" mnemonicParsing="false" onAction="#tempButton" onDragDetected="#handleTempButtonClick" prefHeight="26.0" prefWidth="160.0" text="Button" />
+      <Button fx:id="rockPaperScissorsButton" layoutX="105.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleRockPaperScissorsButtonClick" prefHeight="26.0" prefWidth="160.0" text="Rock Paper Scissors" />
+      <Button fx:id="goBackButton" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleGoBackButtonClick" text="Button" />
+   </children>
+</AnchorPane>

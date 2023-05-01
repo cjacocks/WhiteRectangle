@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MainMenuInitialPage_Controller">
+   <children>
+      <Text layoutX="222.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Text>
+      <Text layoutX="18.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WHITE RECTANGLE" textAlignment="CENTER">
+         <font>
+            <Font size="77.0" />
+         </font>
+      </Text>
+      <Button fx:id="NewGameButton" layoutX="214.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleNewGameButtonClick" prefHeight="26.0" prefWidth="264.0" text="New Game" />
+      <Button fx:id="LoadGameButton" layoutX="214.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleLoadGameButtonClick" prefHeight="26.0" prefWidth="264.0" text="Load Game" />
+      <Button fx:id="HighScoreButton" layoutX="214.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleHighScoreButtonClick" prefHeight="26.0" prefWidth="264.0" text="High Scores" />
+   </children>
+</AnchorPane>
