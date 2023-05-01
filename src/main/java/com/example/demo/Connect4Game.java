@@ -8,7 +8,10 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
+/*
+THIS CODE WAS ALL WRITTEN BY ALEX
+WE HAD ISSUES WITH OUR GITHUB REPO AND HAD TO MAKE A NEW ONE.
+ */
 public class Connect4Game extends Application {
     private static final int ROWS = 6;
     private static final int COLUMNS = 7;
