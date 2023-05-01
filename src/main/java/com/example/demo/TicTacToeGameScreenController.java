@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class GameScreenController {
+public class TicTacToeGameScreenController {
 
     @FXML
     private Button Button1;
