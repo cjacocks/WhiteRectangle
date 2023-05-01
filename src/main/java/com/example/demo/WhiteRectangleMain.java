@@ -14,11 +14,15 @@ public class WhiteRectangleMain extends Application {
 
     This class may not even be needed. TBD
      */
-    // TODO - Add Load Game select Page
-    // TODO - Add View High Scores Game Select Page
 
     @Override
     public void start (Stage stage) throws IOException {
+        /*
+        This is the method that actually throws up the main menu
+        There are a lot of begun statements here. I cannot be arsed to remove them and honestly they are being useful
+        FAR TOO OFTEN for me to be willing to remove them.
+
+         */
         System.out.println("WhiteRectangle: fxml loader start");
         FXMLLoader fxmlLoader = new FXMLLoader(WhiteRectangleMain.class.getResource("/com/example/demo/MainMenuInitialPage.fxml"));
         System.out.println("WhiteRectangle: load scene");

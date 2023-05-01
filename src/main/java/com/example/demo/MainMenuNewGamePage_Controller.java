@@ -1,8 +1,13 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainMenuNewGamePage_Controller {
 
@@ -15,45 +20,77 @@ public class MainMenuNewGamePage_Controller {
     @FXML
     private Button rockPaperScissorsButton;
 
-    // TODO Decide if adding a new game and rename this button constructor and assign fxid and event name.
     @FXML
     private Button diceGameButton;
 
     @FXML
     private Button goBackButton;
 
+
     @FXML
     private void handleConnectFourButtonClick() {
-        Stage stage = (Stage) connectFourButton.getScene().getWindow();
-        stage.close();
+        Stage currentStage = (Stage) connectFourButton.getScene().getWindow();
+        currentStage.close();
         // TODO handle the rest of this event
     }
 
     @FXML
     private void handleTicTacToeButtonClick() {
-        Stage stage = (Stage) ticTacToeButton.getScene().getWindow();
-        stage.close();
+        Stage currentStage = (Stage) ticTacToeButton.getScene().getWindow();
+        currentStage.close();
         // TODO handle the rest of this event
     }
 
     @FXML
     private void handleRockPaperScissorsButtonClick() {
-        Stage stage = (Stage) rockPaperScissorsButton.getScene().getWindow();
-        stage.close();
-        // TODO handle the rest of this event
+        /*
+        This method runs when the user clicks on the button to play a refreshing round of rock paper scissors.
+        Clears the stage then runs the Rock Paper Scissors Game
+         */
+        Stage currentStage = (Stage) rockPaperScissorsButton.getScene().getWindow();
+        currentStage.close();
+
+        /*
+        Cleared out a metric ass ton of debug statements here.
+        Apparently breakpoints are a thing.
+        I'm pissed I didn't know about them sooner, I wouldn't have had to add all the debug shit.
+        But my code works for now. Yay.
+
+        -- Chris
+         */
+        try {
+            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/RockPaperScissorsGame.fxml"));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(newGamePage));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void handleDiceGameButtonClick () {
-        Stage stage = (Stage) diceGameButton.getScene().getWindow();
-        stage.close();
+        Stage currentStage = (Stage) diceGameButton.getScene().getWindow();
+        currentStage.close();
         // TODO handle the rest of this event
     }
 
     @FXML
     private void handleGoBackButtonClick() {
-        Stage stage = (Stage) goBackButton.getScene().getWindow();
-        stage.close();
-        // TODO handle the rest of this event
+        /*
+        When triggered, takes the user make to the main menu. Not that there is much there. If only we had time to sort
+        out fucking save game states. Oh well.
+         */
+        Stage currentStage = (Stage) goBackButton.getScene().getWindow();
+        currentStage.close();
+
+        try {
+            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(newGamePage));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

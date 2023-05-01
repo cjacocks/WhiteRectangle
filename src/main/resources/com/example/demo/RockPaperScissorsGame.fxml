@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RockPaperScissorsGame_Controller">
+   <children>
+      <Label fx:id="gameTitleLable" layoutX="107.0" layoutY="30.0" text="Rock, Paper, Scissors!!!!">
+         <font>
+            <Font name="Brush Script MT Italic" size="43.0" />
+         </font>
+      </Label>
+      <Label fx:id="bestOf5Lable" layoutX="107.0" layoutY="120.0" text="Best out of 5!">
+         <font>
+            <Font name="Agency FB" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="RoundNumberLabel" layoutX="395.0" layoutY="122.0" prefHeight="18.0" prefWidth="70.0" text="This is round:" />
+      <Label layoutX="129.0" layoutY="165.0" text="Player" />
+      <Label layoutX="395.0" layoutY="165.0" text="Adversary" />
+      <Label fx:id="playerScoreLabel" layoutX="141.0" layoutY="191.0" text="0" />
+      <Label fx:id="adversaryScoreLabel" layoutX="414.0" layoutY="191.0" prefHeight="18.0" prefWidth="0.0" text="0" />
+      <Label fx:id="roundDisplayLabel" layoutX="489.0" layoutY="122.0" prefHeight="18.0" prefWidth="7.0" text="1" />
+      <Button fx:id="paperButton" layoutX="252.0" layoutY="276.0" mnemonicParsing="false" onAction="#handlePaperButtonClick" prefHeight="48.0" prefWidth="106.0" text="Paper!">
+         <font>
+            <Font name="Brush Script MT Italic" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="rockButton" layoutX="54.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleRockButtonClick" prefHeight="48.0" prefWidth="106.0" text="Rock!">
+         <font>
+            <Font name="Brush Script MT Italic" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="scissorsButton" layoutX="440.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleScissorsButtonClick" text="Scissors!">
+         <font>
+            <Font name="Brush Script MT Italic" size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="258.0" layoutY="131.0" text="Adversary's Move" />
+      <Label fx:id="advMoveLabel" layoutX="267.0" layoutY="165.0" text="To Be Decided" />
+   </children>
+</AnchorPane>
