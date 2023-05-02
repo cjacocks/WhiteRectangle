@@ -24,19 +24,11 @@ public class TicTacToeTitleScreen_Controller {
     @FXML
     private void startGame(ActionEvent event) throws IOException {
         // Load the game scene FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/TicTacToe_GameScreen.fxml"));
         Parent gameSceneRoot = loader.load();
-
-        // Create the game scene
         Scene gameScene = new Scene(gameSceneRoot);
-
-        // Get the current stage from the StartButton
         Stage stage = (Stage) StartButton.getScene().getWindow();
-
-        // Set the new scene on the current stage
         stage.setScene(gameScene);
-
-        // Show the updated stage
         stage.show();
     }
 

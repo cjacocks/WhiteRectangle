@@ -45,7 +45,9 @@ public class MainMenuNewGamePage_Controller {
     private void handleTicTacToeButtonClick() {
         Stage currentStage = (Stage) ticTacToeButton.getScene().getWindow();
         currentStage.close();
-        // TODO handle the rest of this event
+        Platform.runLater(() -> {
+            new TicTacToeMainMethod().main(null);
+        });
     }
 
     @FXML
