@@ -49,7 +49,15 @@ public class MainMenuInitialPage_Controller {
         // Clears the stage
         Stage stage = (Stage) HighScoreButton.getScene().getWindow();
         stage.close();
-        // TODO - implement High Scores
+
+        try {
+            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/HighScoresPage.fxml"));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(newGamePage));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
