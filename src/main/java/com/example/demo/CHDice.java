@@ -32,9 +32,9 @@ public class CHDice extends Application {
     @Override
     public void start(Stage stage) {
         // Variables
-        int roll1a = 0, roll1b = 0, total1 = 0; // roll 1 🎲 + 🎲 = total
-        int roll2a = 0, roll2b = 0, total2 = 0; // roll 2
-        int roll3a = 0, roll3b = 0, total3 = 0; // roll 3
+        int roll1a = 1, roll1b = 1, total1 = 1; // roll 1 🎲 + 🎲 = total
+        int roll2a = 1, roll2b = 1, total2 = 1; // roll 2
+        int roll3a = 1, roll3b = 1, total3 = 1; // roll 3
 
         double money = 0.0; // current amount of monies
 
@@ -185,12 +185,69 @@ public class CHDice extends Application {
         equal3.relocate(220, 210);
         equal3.setEffect(new DropShadow(10, Color.web("gray")));
 
+        // Dynamic Dice Labels
+        // Roll 1 Dice A
+        Label dynamicRoll1DiceA = new Label("∙");
+        dynamicRoll1DiceA.setFont(new Font("Times New Roman", 40));
+        dynamicRoll1DiceA.setTextFill(Color.web("black"));
+        dynamicRoll1DiceA.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll1DiceA.relocate(55, 90); // v is +15 adjacent to dice position.
+        // Roll 1 Dice B
+        Label dynamicRoll1DiceB = new Label("∙");
+        dynamicRoll1DiceB.setFont(new Font("Times New Roman", 40));
+        dynamicRoll1DiceB.setTextFill(Color.web("black"));
+        dynamicRoll1DiceB.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll1DiceB.relocate(165, 90);
+        // Roll 2 Dice A
+        Label dynamicRoll2DiceA = new Label("∙");
+        dynamicRoll2DiceA.setFont(new Font("Times New Roman", 40));
+        dynamicRoll2DiceA.setTextFill(Color.web("black"));
+        dynamicRoll2DiceA.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll2DiceA.relocate(55, 160);
+        // Roll 2 Dice B
+        Label dynamicRoll2DiceB = new Label("∙");
+        dynamicRoll2DiceB.setFont(new Font("Times New Roman", 40));
+        dynamicRoll2DiceB.setTextFill(Color.web("black"));
+        dynamicRoll2DiceB.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll2DiceB.relocate(165, 160);
+        // Roll 3 Dice A
+        Label dynamicRoll3DiceA = new Label("∙");
+        dynamicRoll3DiceA.setFont(new Font("Times New Roman", 40));
+        dynamicRoll3DiceA.setTextFill(Color.web("black"));
+        dynamicRoll3DiceA.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll3DiceA.relocate(55, 230);
+        // Roll 3 Dice B
+        Label dynamicRoll3DiceB = new Label("∙");
+        dynamicRoll3DiceB.setFont(new Font("Times New Roman", 40));
+        dynamicRoll3DiceB.setTextFill(Color.web("black"));
+        dynamicRoll3DiceB.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll3DiceB.relocate(165, 230);
+        // Roll 1 Total
+        Label dynamicRoll1Total = new Label("##");
+        dynamicRoll1Total.setFont(new Font("Times New Roman", 40));
+        dynamicRoll1Total.setTextFill(Color.web("black"));
+        dynamicRoll1Total.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll1Total.relocate(270, 90);
+        // Roll 2 Total
+        Label dynamicRoll2Total = new Label("##");
+        dynamicRoll2Total.setFont(new Font("Times New Roman", 40));
+        dynamicRoll2Total.setTextFill(Color.web("black"));
+        dynamicRoll2Total.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll2Total.relocate(270, 160);
+        // Roll 3 Total
+        Label dynamicRoll3Total = new Label("##");
+        dynamicRoll3Total.setFont(new Font("Times New Roman", 40));
+        dynamicRoll3Total.setTextFill(Color.web("black"));
+        dynamicRoll3Total.setEffect(new DropShadow(10, Color.web("gray")));
+        dynamicRoll3Total.relocate(270, 230);
+        // Reference for relocate method: v: ↔, v1: ↕
+
         // Logo, for fun
         // Image logo = new Image("https://upload.wikimedia.org/wikipedia/en/d/d1/Dalton_State_College_logo.png");
 
         // Create Pane root component and add elements to it
         Pane root = new Pane(); // It's such a pane to create this root object.
-        root.getChildren().addAll(staticBank, dynamicBank, staticWager, dynamicWager, staticGuess, dynamicGuess, button, staticRoll1DiceA, staticRoll1DiceB, staticRoll2DiceA, staticRoll2DiceB, staticRoll3DiceA, staticRoll3DiceB, plus1, plus2, plus3, equal1, equal2, equal3);
+        root.getChildren().addAll(staticBank, dynamicBank, staticWager, dynamicWager, staticGuess, dynamicGuess, button, staticRoll1DiceA, staticRoll1DiceB, staticRoll2DiceA, staticRoll2DiceB, staticRoll3DiceA, staticRoll3DiceB, plus1, plus2, plus3, equal1, equal2, equal3, dynamicRoll1DiceA, dynamicRoll1DiceB, dynamicRoll2DiceA, dynamicRoll2DiceB, dynamicRoll3DiceA, dynamicRoll3DiceB, dynamicRoll1Total, dynamicRoll2Total, dynamicRoll3Total);
 
         // Create Scene with root ↯
         Scene scene = new Scene(root, 400, 500);
