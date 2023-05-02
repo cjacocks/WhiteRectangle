@@ -49,7 +49,7 @@ public class MainMenuInitialPage_Controller {
         // Clears the stage
         Stage stage = (Stage) HighScoreButton.getScene().getWindow();
         stage.close();
-        // TODO handle the rest of this event
+        // TODO - implement High Scores
     }
 
 }

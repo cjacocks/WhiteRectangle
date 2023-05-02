@@ -1,6 +1,5 @@
 package com.example.demo;
 
-// TODO - Make this use the Player win and Adversary win resources upon play win.
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
