@@ -45,9 +45,15 @@ public class MainMenuNewGamePage_Controller {
     private void handleTicTacToeButtonClick() {
         Stage currentStage = (Stage) ticTacToeButton.getScene().getWindow();
         currentStage.close();
-        Platform.runLater(() -> {
-            new TicTacToeMainMethod().main(null);
-        });
+
+        try {
+            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/TicTacToe_GameScreen.fxml"));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(newGamePage));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -81,7 +87,7 @@ public class MainMenuNewGamePage_Controller {
     private void handleDiceGameButtonClick () {
         Stage currentStage = (Stage) diceGameButton.getScene().getWindow();
         currentStage.close();
-        // TODO handle the rest of this event
+        // TODO implement DiceGame
     }
 
     @FXML

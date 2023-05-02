@@ -1,9 +1,16 @@
 package com.example.demo;
 
+// TODO - Make this use the Player win and Adversary win resources upon play win.
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class TicTacToeGameScreenController {
 
@@ -33,6 +40,10 @@ public class TicTacToeGameScreenController {
 
     @FXML
     private Button Button9;
+
+    @FXML
+    private Button mainMenuButton;
+
 
     @FXML
     private Label TurnText;
@@ -95,6 +106,21 @@ public class TicTacToeGameScreenController {
 
         if (isDraw) {
             TurnText.setText("It's a draw!");
+        }
+    }
+
+    @FXML
+    private void handeMainMenuButtonClick() {
+        Stage currentStage = (Stage) mainMenuButton.getScene().getWindow();
+        currentStage.close();
+
+        try {
+            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(newGamePage));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
