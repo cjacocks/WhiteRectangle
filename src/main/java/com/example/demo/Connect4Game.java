@@ -1,12 +1,17 @@
 package com.example.demo;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
 /*
 THIS CODE WAS ALL WRITTEN BY ALEX
 WE HAD ISSUES WITH OUR GITHUB REPO AND HAD TO MAKE A NEW ONE.
@@ -22,9 +27,14 @@ public class Connect4Game extends Application {
     private boolean playerOneTurn = true;
     private boolean gameEnded = false;
 
+    /*
+    // This code not used, so am commenting it out for now -- Chris
+
     public static void main(String[] args) {
         launch(args);
     }
+    */
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -82,9 +92,12 @@ public class Connect4Game extends Application {
         if (checkForWin()) {
             gameEnded = true;
             System.out.println("Player " + (playerOneTurn ? "1" : "2") + " wins!");
+            int winner = playerOneTurn ? 1 : 2;
+            performActionsOnWin(winner);
         } else if (checkForDraw()) {
             gameEnded = true;
             System.out.println("Draw!");
+            performActionsOnWin(3);
         } else {
             playerOneTurn = !playerOneTurn;
         }
@@ -174,5 +187,46 @@ private boolean checkRowsForWin() {
             }
         }
         return true;
+    }
+
+    private void performActionsOnWin(int winner) {
+        System.out.println("Player " + winner + " wins!");
+        // Perform actions based on the winner
+        // For example, you can show a message box or play a sound
+
+        Stage primaryStage = (Stage) board[0][0].getScene().getWindow();
+        primaryStage.close();
+
+        if (winner == 1) {
+            try {
+                Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/C4G_P1_Wins.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(mainMenuPage));
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (winner == 2) {
+            try {
+                Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/C4G_P2_Wins.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(mainMenuPage));
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (winner == 3) {
+            try {
+                Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/C4G_Draw.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(mainMenuPage));
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

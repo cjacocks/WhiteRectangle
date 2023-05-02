@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.C4GP2Wins_Controller">
+   <children>
+      <Button fx:id="mainMenuButton" layoutX="240.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleMainMenuButtonClick" text="Back to Main Menu" />
+      <Label layoutX="176.0" layoutY="222.0" text="Player 2 Wins!">
+         <font>
+            <Font name="Brush Script MT Italic" size="48.0" />
+         </font></Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@CrownTransparent.PNG" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

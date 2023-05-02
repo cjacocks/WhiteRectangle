@@ -1,6 +1,6 @@
 package com.example.demo;
 // This comment exists to count the number of times I have had to restart IntelliJ due to scenebuilder
-// Current count == 10
+// Current count == 15
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
