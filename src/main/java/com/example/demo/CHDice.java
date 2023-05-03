@@ -1,11 +1,19 @@
 package com.example.demo;
 
-/* CHDice
+/* CHDice.java
  * by Caleb Hawn
  * 5/2/2023
+ * --------------------
+ * This program's logic is based on a CLI game I wrote
+ * in Python 3 in 2017 called CHDice.py. Here, it is
+ * converted to JavaFX with a GUI. As such, I have
+ * included the original CLI outputs, along with an original
+ * GUI using the Java libraries listed below.
+ * Enjoy losing money! -CabeoC
  */
 
 // ══════════ Imports ══════════
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -17,26 +25,30 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.geometry.Insets;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.io.*;
-import java.util.*;
-import java.util.regex.*;
-import java.util.Random;
+// ══════════ GUI ══════════
 
 public class CHDice extends Application {
+    // Variable
+    private double money; // current amount of monies in le bank
+
     @Override
     public void start(Stage stage) {
-        // Variables
-        int roll1a = 1, roll1b = 1, total1 = 1; // roll 1 🎲 + 🎲 = total
-        int roll2a = 1, roll2b = 1, total2 = 1; // roll 2
-        int roll3a = 1, roll3b = 1, total3 = 1; // roll 3
-
-        double money = 0.0; // current amount of monies
+        // ══════════ CLI Header ══════════
+        System.out.println("   ╔════════╗╔════════╗╔════════╗");
+        System.out.println("   ║ ● ● ●  ║║ ●    ╔═╝╚═╗●   ● ║");
+        System.out.println("   ║ Welcome║║to the║Dice║game! ║");
+        System.out.println("   ║ ● ● ●  ║║     ●╚═╗╔═╝●   ● ║");
+        System.out.println("   ╚════════╝╚════════╝╚════════╝");
+        System.out.println("░▫Rules: You have three rolls of two░\n░ dice to match a number you select.░");
+        System.out.println("▒▫If you guess on the…              ▒");
+        System.out.println("▒ 1st roll, you win 2x your wager.  ▒");
+        System.out.println("▒ 2nd roll, you win 1½x your wager. ▒");
+        System.out.println("▒ 3rd roll, you win your wager.     ▒");
+        System.out.println("▓▫Wager 0 to quit and save the game.▓\n");
 
         // Set the title of the window
         stage.setTitle("A Game o' Dice");
@@ -71,10 +83,6 @@ public class CHDice extends Application {
         TextField dynamicWager = new TextField();
         dynamicWager.relocate(220, 320);
         dynamicWager.setEffect(new DropShadow(10, Color.web("blue")));
-        dynamicWager.setOnAction(event -> {
-            System.out.println(dynamicWager.getText());
-            dynamicBank.setText(dynamicWager.getText());
-        });
 
         // Static Guess Text Field
         Label staticGuess = new Label("Your Guess:");
@@ -87,18 +95,6 @@ public class CHDice extends Application {
         TextField dynamicGuess = new TextField();
         dynamicGuess.relocate(220, 370);
         dynamicGuess.setEffect(new DropShadow(10, Color.web("blue")));
-        dynamicGuess.setOnAction(event -> {
-            System.out.println(dynamicGuess.getText());
-            dynamicBank.setText(dynamicGuess.getText());
-        });
-
-        // Button
-        Button button = new Button("Dewit");
-        button.relocate(200, 450);
-        button.setOnAction(event -> {
-            System.out.println(dynamicGuess.getText());
-            dynamicBank.setText(dynamicGuess.getText());
-        });
 
         // Static Dice
         // Roll 1 Dice A
@@ -242,19 +238,116 @@ public class CHDice extends Application {
         dynamicRoll3Total.relocate(270, 230);
         // Reference for relocate method: v: ↔, v1: ↕
 
+        Label message = new Label(); // Message to display results and errors.
+        message.setFont(new Font("Times New Roman", 20));
+        message.setTextFill(Color.web("yellow"));
+        message.setEffect(new DropShadow(10, Color.web("black")));
+        staticBank.setPadding(new Insets(10, 10, 10, 10));
+        message.relocate(20, 450);
+
+        // Button
+        Button button = new Button("Dewit");
+        button.relocate(280, 415);
+        button.setOnAction(event -> { // Game runs when button's pushed.
+
+            // ══════════ Game Logic ══════════
+
+            // Error check user input.
+            try { // Check if the wagerText double.
+                double wager = Double.parseDouble(dynamicWager.getText()); // Convert wager.
+            } catch (NumberFormatException e) { // if not a double, error.
+                message.setTextFill(Color.web("red"));
+                message.setText("The wager must be a valid number.");
+                System.out.println("The wager must be a double.");
+                return;
+            }
+            try { // Check if the guessText is an int
+                int guess = Integer.parseInt(dynamicGuess.getText()); // Convert guess.
+            } catch (NumberFormatException e) { // if not an int, error.
+                message.setTextFill(Color.web("red"));
+                message.setText("The guess must be a whole number.");
+                System.out.println("The guess must be an integer.");
+                return;
+            }
+
+            // Convert user input from Strings to numbers.
+            double wager = Double.parseDouble(dynamicWager.getText()); // convert
+            int guess = Integer.parseInt(dynamicGuess.getText());
+
+            // Confirm user guess is a good guess. Two dice add between 2 & 12.
+            if (guess <2 || guess > 12) {
+                message.setTextFill(Color.web("red"));
+                message.setText("Your guess must be between 2 and 12.");
+                System.out.println("The guess must be between 2 and 12.");
+                return;
+            }
+
+            // Roll of le Dice
+            // Roll 1
+            int[] roll1 = roll(); // Roll the dice thrice.
+            dynamicRoll1DiceA.setText(Integer.toString(roll1[0])); // convert int to string
+            dynamicRoll1DiceB.setText(Integer.toString(roll1[1])); // and set the text of the
+            dynamicRoll1Total.setText(Integer.toString(roll1[2])); // dynamic labels.
+            // Roll 2
+            int[] roll2 = roll(); // store results in array variables.
+            dynamicRoll2DiceA.setText(Integer.toString(roll2[0]));
+            dynamicRoll2DiceB.setText(Integer.toString(roll2[1]));
+            dynamicRoll2Total.setText(Integer.toString(roll2[2]));
+            // Roll 3
+            int[] roll3 = roll();
+            dynamicRoll3DiceA.setText(Integer.toString(roll3[0]));
+            dynamicRoll3DiceB.setText(Integer.toString(roll3[1]));
+            dynamicRoll3Total.setText(Integer.toString(roll3[2]));
+
+            // Check
+            if (guess == roll1[2]) {
+                this.money *= 2; // Double the money.
+                System.out.println("Guessed on the first roll. You won two times your wager.");
+            }
+            // TODO other two, and set label, and stuff.
+
+        });
+
         // Logo, for fun
         // Image logo = new Image("https://upload.wikimedia.org/wikipedia/en/d/d1/Dalton_State_College_logo.png");
 
         // Create Pane root component and add elements to it
         Pane root = new Pane(); // It's such a pane to create this root object.
-        root.getChildren().addAll(staticBank, dynamicBank, staticWager, dynamicWager, staticGuess, dynamicGuess, button, staticRoll1DiceA, staticRoll1DiceB, staticRoll2DiceA, staticRoll2DiceB, staticRoll3DiceA, staticRoll3DiceB, plus1, plus2, plus3, equal1, equal2, equal3, dynamicRoll1DiceA, dynamicRoll1DiceB, dynamicRoll2DiceA, dynamicRoll2DiceB, dynamicRoll3DiceA, dynamicRoll3DiceB, dynamicRoll1Total, dynamicRoll2Total, dynamicRoll3Total);
+        root.getChildren().addAll(staticBank, dynamicBank, staticWager, dynamicWager, staticGuess, dynamicGuess, button, message, staticRoll1DiceA, staticRoll1DiceB, staticRoll2DiceA, staticRoll2DiceB, staticRoll3DiceA, staticRoll3DiceB, plus1, plus2, plus3, equal1, equal2, equal3, dynamicRoll1DiceA, dynamicRoll1DiceB, dynamicRoll2DiceA, dynamicRoll2DiceB, dynamicRoll3DiceA, dynamicRoll3DiceB, dynamicRoll1Total, dynamicRoll2Total, dynamicRoll3Total);
 
         // Create Scene with root ↯
         Scene scene = new Scene(root, 400, 500);
         stage.setScene(scene);
         stage.show();
-    }
+    } // end start
+
+    // ══════════ Roll Function ══════════
+
+    // Each round runs this thrice. I'd rather not make an object class.
+    private static int[] roll() {
+        // Pick a number between 2-12, twice.
+        int dice1 = (int) (Math.random() * 6) + 2;
+        int dice2 = (int) (Math.random() * 6) + 2;
+
+        int total = dice1 + dice2; // Adds both rolls together.
+
+        // Output the dice to CLI.
+        System.out.println("You rolled " + dice1 + " and " + dice2 + ", which adds up to " + total);
+        System.out.println("\t\t ╔═══╗ ╔═══╗");
+        System.out.println("\t\t ║ " + dice1 + " ║ ║ " + dice2 + " ║ = " + total);
+        System.out.println("\t\t ╚═══╝ ╚═══╝");
+
+        // Return an array to hold the results.
+        return new int[] {dice1, dice2, total};
+        /* Usage:
+         * int[] results = roll();
+         * dice1 = results[0];
+         * dice2 = results[1];
+         * total = results[2];
+         */
+    } // end roll
+
     //public static void main(String[] args) {launch(args);}
 }
-// TODO: make all 6 dice
+
 // TODO: wager
