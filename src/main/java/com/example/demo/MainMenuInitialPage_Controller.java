@@ -49,7 +49,7 @@ public class MainMenuInitialPage_Controller {
         // Clears the stage
         Stage stage = (Stage) HighScoreButton.getScene().getWindow();
         stage.close();
-
+        // TODO - Still need to add DB things and make it work.
         try {
             Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/HighScoresPage.fxml"));
             Stage newStage = new Stage();

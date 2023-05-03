@@ -87,7 +87,10 @@ public class MainMenuNewGamePage_Controller {
     private void handleDiceGameButtonClick () {
         Stage currentStage = (Stage) diceGameButton.getScene().getWindow();
         currentStage.close();
-        // TODO - implement DiceGame
+
+        Platform.runLater(() -> {
+            new CHDice().start(new Stage());
+        });
     }
 
     @FXML
