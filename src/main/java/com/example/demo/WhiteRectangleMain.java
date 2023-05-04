@@ -57,6 +57,8 @@ public class WhiteRectangleMain extends Application {
         }
 
         System.out.println("WhiteRectangle: Running Main Method Now");
+
+
         launch();
     }
 
@@ -89,7 +91,7 @@ public class WhiteRectangleMain extends Application {
         connection.close();
     }
 
-    private void updateDB_RPS(int turn, int player, int adversary) {
+    protected void updateDB_RPS(int turn, int player, int adversary) {
         String date = getDate();
         System.out.println("WhiteRectangle: updating table rps_game.   Date: " + date + " Turn: " + turn + " Player: " + player + " Adversary: " + adversary);
 
@@ -106,7 +108,7 @@ public class WhiteRectangleMain extends Application {
         }
     }
 
-    private void updateDB_Dice(double bank) {
+    protected void updateDB_Dice(double bank) {
         String date = getDate();
         System.out.println("WhiteRectangle: updating table dice_game_highscores.   Date: " + date + " Bank: " + bank);
 
