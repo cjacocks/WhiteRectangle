@@ -61,7 +61,7 @@ Two dice are rolled three times.
 You cannot wager more than you have in the bank, and you must guess between 2 & 12, 
 the possible totals of 2 dice. If the player's bank reaches $0, they start over.
 
-# Contributers
+## Contributers
 
 - [Alexander Hernandez](https://github.com/AlexHT24)
 - [Caleb Hawn](https://github.com/CabeoC)
