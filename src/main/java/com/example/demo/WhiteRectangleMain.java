@@ -1,5 +1,5 @@
 package com.example.demo;
-// This comment exists to count the number of times I have had to restart IntelliJ due to scenebuilder
+// This comment exists to count the number of times I have had to restart IntelliJ due to scene builder
 // Current count == 18
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +29,7 @@ public class WhiteRectangleMain extends Application {
     public void start (Stage stage) throws IOException {
         /*
         This is the method that actually throws up the main menu
-        There are a lot of begun statements here. I cannot be arsed to remove them and honestly they are being useful
+        There are a lot of begun statements here. I cannot be arsed to remove them, and honestly they are being useful
         FAR TOO OFTEN for me to be willing to remove them.
 
          */
@@ -103,7 +103,6 @@ public class WhiteRectangleMain extends Application {
     private String getDate() {
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        String formattedDate = currentDate.format(formatter);
-        return formattedDate;
+        return currentDate.format(formatter);
     }
 }
