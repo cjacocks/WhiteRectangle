@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HighScorePageDice_Controller">
    <children>
       <Button fx:id="highScoreButton" layoutX="384.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleHighScoreButtonClick" text="Back to High Scores" />
@@ -14,10 +13,10 @@
             <Font name="Brush Script MT Italic" size="48.0" />
          </font>
       </Label>
-      <TableView layoutX="154.0" layoutY="100.0" prefHeight="200.0" prefWidth="291.0">
+      <TableView fx:id="diceTable" layoutX="154.0" layoutY="100.0" onSort="#handleSort" prefHeight="200.0" prefWidth="291.0">
         <columns>
-          <TableColumn prefWidth="145.5999755859375" text="Date" />
-          <TableColumn prefWidth="145.60003662109375" text="Account Ballance" />
+          <TableColumn fx:id="dateColumn" prefWidth="145.5999755859375" text="Date" />
+          <TableColumn fx:id="acctColumn" prefWidth="145.60003662109375" text="Account Ballance" />
         </columns>
       </TableView>
    </children>
