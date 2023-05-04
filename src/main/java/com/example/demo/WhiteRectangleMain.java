@@ -57,9 +57,9 @@ public class WhiteRectangleMain extends Application {
         }
 
         System.out.println("WhiteRectangle: Running Main Method Now");
-        updateDB_RPS(8,3,1);
-        updateDB_Dice(2500.00);
-        //launch();
+        //updateDB_RPS(8,3,1);
+        //updateDB_Dice(2500.00);
+        launch();
     }
 
     private static void setupDatabase() throws SQLException {
