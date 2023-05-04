@@ -1,5 +1,3 @@
-package com.example.demo;
-
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -20,6 +18,7 @@ public class MemoryGame extends Application {
     private Map<Integer, Button> numberButtons = new HashMap<>();
     private int currentNumber = 1;
     private Label victoryLabel = new Label();
+    private Label instructionsLabel = new Label();
 
     public static void main(String[] args) {
         launch(args);
@@ -30,7 +29,7 @@ public class MemoryGame extends Application {
         primaryStage.setTitle("Memory Game");
 
         Pane root = createRootPane();
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(root, 700, 700); // Resize the root
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -45,9 +44,13 @@ public class MemoryGame extends Application {
         victoryLabel.setText(""); // Initialize the label with an empty string
         victoryLabel.setStyle("-fx-font-size: 18; -fx-font-weight: bold;");
 
+        instructionsLabel.setText("Click 'Start Game' to begin. Memorize the numbers 1-5 that appear on the grid for 3 seconds. Then, click the correct boxes in order from 1-5 to win. Upon winning/losing, the game resets.");
+        instructionsLabel.setStyle("-fx-font-size: 14;");
+        instructionsLabel.setWrapText(true);
+
         VBox root = new VBox(10);
         root.setAlignment(Pos.CENTER); // Center the grid, start button, and victory label within the window
-        root.getChildren().addAll(grid, startButton, victoryLabel);
+        root.getChildren().addAll(grid, instructionsLabel, startButton, victoryLabel);
         return root;
     }
 
@@ -110,7 +113,6 @@ public class MemoryGame extends Application {
         Button clickedButton = gridButtons[i][j];
 
         if (numberButtons.get(currentNumber) == clickedButton) {
-            clickedButton.setText(String.valueOf(currentNumber));
             clickedButton.setText(String.valueOf(currentNumber));
             currentNumber++;
 
