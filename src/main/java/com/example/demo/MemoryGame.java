@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -39,6 +41,7 @@ public class MemoryGame extends Application {
         GridPane grid = createGrid();
 
         Button startButton = new Button("Start Game");
+
         startButton.setOnAction(e -> startGame());
 
         victoryLabel.setText(""); // Initialize the label with an empty string
