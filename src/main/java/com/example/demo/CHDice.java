@@ -2,7 +2,7 @@ package com.example.demo;
 
 /* CHDice.java
  * by Caleb Hawn
- * 5/2/2023
+ * 5/2-3/2023
  * --------------------
  * This program's logic is based on a CLI game I wrote
  * in Python 3 in 2017 called CHDice.py. Here, it is
@@ -32,8 +32,8 @@ import javafx.scene.control.TextField;
 // ══════════ GUI ══════════
 
 public class CHDice extends Application {
-    // Variable
-    private double money; // current amount of monies in le bank
+    // Bank
+    private double money = 500.00; // Current amount of monies in le bank, $500.00 by default.
 
     @Override
     public void start(Stage stage) {
@@ -64,7 +64,7 @@ public class CHDice extends Application {
         // Reference for relocate method: v: ↔, v1: ↕
 
         // Dynamic Bank Label
-        Label dynamicBank = new Label("0.00"); // TODO: currently a placeholder
+        Label dynamicBank = new Label(String.format("%.2f", money)); // Set bank amount.
         dynamicBank.setPadding(new Insets(10, 10, 10, 10));
         dynamicBank.relocate(120, 10);
         dynamicBank.setFont(new Font("Times New Roman", 30));
@@ -274,13 +274,19 @@ public class CHDice extends Application {
             double wager = Double.parseDouble(dynamicWager.getText()); // convert
             int guess = Integer.parseInt(dynamicGuess.getText());
 
+            System.out.println(guess);
+
             // Confirm user guess is a good guess. Two dice add between 2 & 12.
-            if (guess <2 || guess > 12) {
+            if (!(guess >=2 && guess <= 12)) {
                 message.setTextFill(Color.web("red"));
                 message.setText("Your guess must be between 2 and 12.");
                 System.out.println("The guess must be between 2 and 12.");
                 return;
-            }
+            } else if (wager > money) { // Wager can't be above current bank amount.
+                message.setTextFill(Color.web("red"));
+                message.setText("Can't go into debt!");
+                return;
+            } // end checks
 
             // Roll of le Dice
             // Roll 1
@@ -300,16 +306,45 @@ public class CHDice extends Application {
             dynamicRoll3Total.setText(Integer.toString(roll3[2]));
 
             // Check
-            if (guess == roll1[2]) {
-                this.money *= 2; // Double the money.
+            if (guess == roll1[2]) { // If guess matches first roll,
+                double win = wager * 2;    // Double the money.
                 System.out.println("Guessed on the first roll. You won two times your wager.");
+                message.setTextFill(Color.web("green"));
+                message.setText("Right on first roll! You won $" + String.format("%.2f", win));
+                money += win; // Add win to money.
             }
-            // TODO other two, and set label, and stuff.
+            else if (guess == roll2[2]) {   // If guess is second roll,
+                double win = wager + (wager / 2); //  Get your wager plus half.
+                System.out.println("Guessed on the second roll. You won your wager plus half.");
+                message.setTextFill(Color.web("green"));
+                message.setText("Right on second roll! You won $" + String.format("%.2f", win));
+                money += win; // Add win to money.
+            }
+            else if (guess == roll3[2]) { // If guess is third roll,
+                System.out.println("Guessed on the third roll. You won your wager.");
+                message.setTextFill(Color.web("green"));
+                message.setText(String.format("Right on third roll! You won $" + String.format("%.2f", wager)));
+                money += wager; // Add wager to money.
+            }
+            else { // If guess is wrong…
+                System.out.println("Guessed wrong.");
+                money -= wager; // Subtract wager from money.
+                if (money == 0.0) { // If the bank runs dry, reset to $500.
+                    message.setTextFill(Color.web("red"));
+                    message.setText("Out of money! Resetting the bank…");
+                    System.out.println("Out of money. Resetting the bank.");
+                    money = 500;
+                } else { // If bank's still alive, message it.
+                    message.setTextFill(Color.web("green"));
+                    message.setText("You guessed wrong. You lose $" + String.format("%.2f", wager));
+                }
+            } // end else
 
-        });
+            dynamicBank.setText(String.valueOf(String.format("%.2f", money))); // Update bank label.
+        }); // end button
 
         // Logo, for fun
-        // Image logo = new Image("https://upload.wikimedia.org/wikipedia/en/d/d1/Dalton_State_College_logo.png");
+        //Image logo = new Image("https://upload.wikimedia.org/wikipedia/en/d/d1/Dalton_State_College_logo.png");
 
         // Create Pane root component and add elements to it
         Pane root = new Pane(); // It's such a pane to create this root object.
@@ -326,8 +361,8 @@ public class CHDice extends Application {
     // Each round runs this thrice. I'd rather not make an object class.
     private static int[] roll() {
         // Pick a number between 2-12, twice.
-        int dice1 = (int) (Math.random() * 6) + 2;
-        int dice2 = (int) (Math.random() * 6) + 2;
+        int dice1 = (int) (Math.random() * 6 +1);
+        int dice2 = (int) (Math.random() * 6 +1);
 
         int total = dice1 + dice2; // Adds both rolls together.
 

@@ -41,6 +41,9 @@ build/
 /*
 !/src
 
-### Include .gitignore ###
+### Explicit Include ###
 !.gitignore
 !.png
+!.md
+!LICENSE
+!CODEOWNERS
