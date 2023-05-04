@@ -15,6 +15,9 @@ package com.example.demo;
 // ══════════ Imports ══════════
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -29,11 +32,13 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 // ══════════ GUI ══════════
 
 public class CHDice extends Application {
     // Bank
-    private double money = 500.00; // Current amount of monies in le bank, $500.00 by default.
+    private double money = 500.0; // Start w/ $500.00 in þe bank.
 
     @Override
     public void start(Stage stage) {
@@ -245,7 +250,25 @@ public class CHDice extends Application {
         staticBank.setPadding(new Insets(10, 10, 10, 10));
         message.relocate(20, 450);
 
-        // Button
+        // Back button
+        Button back = new Button("Back"); // Exit condition
+        back.setOnAction(event -> Platform.runLater(() -> {
+            new WhiteRectangleMain().updateDB_Dice(money); // Save current bank amount to the database.
+
+            Stage currentStage = (Stage) back.getScene().getWindow(); // Closes the CHDice window.
+            currentStage.close();
+
+            try { // Opens Main Menu. Requires FXML.
+                Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+                Stage newStage = new Stage();
+                newStage.setScene(new Scene(mainMenuPage));
+                newStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
+
+        // Play Button
         Button button = new Button("Dewit");
         button.relocate(280, 415);
         button.setOnAction(event -> { // Game runs when button's pushed.
@@ -259,7 +282,7 @@ public class CHDice extends Application {
                 message.setTextFill(Color.web("red"));
                 message.setText("The wager must be a valid number.");
                 System.out.println("The wager must be a double.");
-                return;
+                return; // End round
             }
             try { // Check if the guessText is an int
                 int guess = Integer.parseInt(dynamicGuess.getText()); // Convert guess.
@@ -267,7 +290,7 @@ public class CHDice extends Application {
                 message.setTextFill(Color.web("red"));
                 message.setText("The guess must be a whole number.");
                 System.out.println("The guess must be an integer.");
-                return;
+                return; // End round
             }
 
             // Convert user input from Strings to numbers.
@@ -281,11 +304,11 @@ public class CHDice extends Application {
                 message.setTextFill(Color.web("red"));
                 message.setText("Your guess must be between 2 and 12.");
                 System.out.println("The guess must be between 2 and 12.");
-                return;
+                return; // End round
             } else if (wager > money) { // Wager can't be above current bank amount.
                 message.setTextFill(Color.web("red"));
                 message.setText("Can't go into debt!");
-                return;
+                return; // End round
             } // end checks
 
             // Roll of le Dice
@@ -345,7 +368,7 @@ public class CHDice extends Application {
 
         // Create Pane root component and add elements to it
         Pane root = new Pane(); // It's such a pane to create this root object.
-        root.getChildren().addAll(staticBank, dynamicBank, staticWager, dynamicWager, staticGuess, dynamicGuess, button, message, staticRoll1DiceA, staticRoll1DiceB, staticRoll2DiceA, staticRoll2DiceB, staticRoll3DiceA, staticRoll3DiceB, plus1, plus2, plus3, equal1, equal2, equal3, dynamicRoll1DiceA, dynamicRoll1DiceB, dynamicRoll2DiceA, dynamicRoll2DiceB, dynamicRoll3DiceA, dynamicRoll3DiceB, dynamicRoll1Total, dynamicRoll2Total, dynamicRoll3Total);
+        root.getChildren().addAll(staticBank, dynamicBank, staticWager, dynamicWager, staticGuess, dynamicGuess, button, back, message, staticRoll1DiceA, staticRoll1DiceB, staticRoll2DiceA, staticRoll2DiceB, staticRoll3DiceA, staticRoll3DiceB, plus1, plus2, plus3, equal1, equal2, equal3, dynamicRoll1DiceA, dynamicRoll1DiceB, dynamicRoll2DiceA, dynamicRoll2DiceB, dynamicRoll3DiceA, dynamicRoll3DiceB, dynamicRoll1Total, dynamicRoll2Total, dynamicRoll3Total);
 
         // Create Scene with root ↯
         Scene scene = new Scene(root, 400, 500);
