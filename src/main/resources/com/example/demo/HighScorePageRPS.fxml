@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HighScorePageRPS_Controller">
+   <children>
+      <Label layoutX="134.0" layoutY="30.0" text="Rock Paper Scissors">
+         <font>
+            <Font name="Brush Script MT Italic" size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="mainMenuButton" layoutX="118.0" layoutY="314.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Return to Main Menu" />
+      <Button layoutX="349.0" layoutY="314.0" mnemonicParsing="false" text="Return to High Scores" />
+      <TableView layoutX="37.0" layoutY="100.0" prefHeight="200.0" prefWidth="560.0">
+        <columns>
+          <TableColumn prefWidth="138.20001220703125" text="Date" />
+          <TableColumn prefWidth="139.39999389648438" text="Number of Turns" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
