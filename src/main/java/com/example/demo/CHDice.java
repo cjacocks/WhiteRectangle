@@ -343,9 +343,6 @@ public class CHDice extends Application {
             dynamicBank.setText(String.valueOf(String.format("%.2f", money))); // Update bank label.
         }); // end button
 
-        // Logo, for fun
-        //Image logo = new Image("https://upload.wikimedia.org/wikipedia/en/d/d1/Dalton_State_College_logo.png");
-
         // Create Pane root component and add elements to it
         Pane root = new Pane(); // It's such a pane to create this root object.
         root.getChildren().addAll(staticBank, dynamicBank, staticWager, dynamicWager, staticGuess, dynamicGuess, button, message, staticRoll1DiceA, staticRoll1DiceB, staticRoll2DiceA, staticRoll2DiceB, staticRoll3DiceA, staticRoll3DiceB, plus1, plus2, plus3, equal1, equal2, equal3, dynamicRoll1DiceA, dynamicRoll1DiceB, dynamicRoll2DiceA, dynamicRoll2DiceB, dynamicRoll3DiceA, dynamicRoll3DiceB, dynamicRoll1Total, dynamicRoll2Total, dynamicRoll3Total);
@@ -384,5 +381,3 @@ public class CHDice extends Application {
 
     //public static void main(String[] args) {launch(args);}
 }
-
-// TODO: wager
