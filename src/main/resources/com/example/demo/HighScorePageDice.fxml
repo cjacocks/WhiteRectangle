@@ -13,7 +13,7 @@
             <Font name="Brush Script MT Italic" size="48.0" />
          </font>
       </Label>
-      <TableView fx:id="diceTable" layoutX="154.0" layoutY="100.0" onSort="#handleSort" prefHeight="200.0" prefWidth="291.0">
+      <TableView fx:id="diceTable" layoutX="154.0" layoutY="100.0" prefHeight="200.0" prefWidth="291.0">
         <columns>
           <TableColumn fx:id="dateColumn" prefWidth="145.5999755859375" text="Date" />
           <TableColumn fx:id="acctColumn" prefWidth="145.60003662109375" text="Account Ballance" />
