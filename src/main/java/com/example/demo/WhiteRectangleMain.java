@@ -57,9 +57,9 @@ public class WhiteRectangleMain extends Application {
         }
 
         System.out.println("WhiteRectangle: Running Main Method Now");
-
-
-        launch();
+        updateDB_RPS(8,3,1);
+        updateDB_Dice(2500.00);
+        //launch();
     }
 
     private static void setupDatabase() throws SQLException {
@@ -91,7 +91,7 @@ public class WhiteRectangleMain extends Application {
         connection.close();
     }
 
-    protected void updateDB_RPS(int turn, int player, int adversary) {
+    protected static void updateDB_RPS(int turn, int player, int adversary) {
         String date = getDate();
         System.out.println("WhiteRectangle: updating table rps_game.   Date: " + date + " Turn: " + turn + " Player: " + player + " Adversary: " + adversary);
 
@@ -108,7 +108,7 @@ public class WhiteRectangleMain extends Application {
         }
     }
 
-    protected void updateDB_Dice(double bank) {
+    protected static void updateDB_Dice(double bank) {
         String date = getDate();
         System.out.println("WhiteRectangle: updating table dice_game_highscores.   Date: " + date + " Bank: " + bank);
 
@@ -123,7 +123,7 @@ public class WhiteRectangleMain extends Application {
         }
     }
 
-    private String getDate() {
+    private static String getDate() {
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         return currentDate.format(formatter);
