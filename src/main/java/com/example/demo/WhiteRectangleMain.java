@@ -94,10 +94,14 @@ public class WhiteRectangleMain extends Application {
 
     private void updateDB_RPS(int turn, int player, int adversary) {
         String date = getDate();
+        System.out.println("WhiteRectangle: updating table rps_game.   Date: " + date + " Turn: " + turn + " Player: " + player + " Adversary: " + adversary);
+
     }
 
     private void updateDB_Dice(int bank) {
         String date = getDate();
+        System.out.println("WhiteRectangle: updating table dice_game_highscores.   Date: " + date + " Bank: " + bank);
+
     }
 
     private String getDate() {
