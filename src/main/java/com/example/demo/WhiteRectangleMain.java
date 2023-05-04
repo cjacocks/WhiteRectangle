@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,9 +77,9 @@ public class WhiteRectangleMain extends Application {
         String rpsGameSql = "CREATE TABLE rps_game ("
                 + "id INTEGER PRIMARY KEY,"
                 + "date TEXT,"
-                + "player1 INT,"
-                + "player2 INT,"
-                + "result INT"
+                + "turns INT,"
+                + "player INT,"
+                + "adversary INT"
                 + ")";
         try (Statement stmt = connection.createStatement()) {
             stmt.execute(rpsGameSql);
@@ -96,12 +93,32 @@ public class WhiteRectangleMain extends Application {
         String date = getDate();
         System.out.println("WhiteRectangle: updating table rps_game.   Date: " + date + " Turn: " + turn + " Player: " + player + " Adversary: " + adversary);
 
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME)) {
+            String input = "INSERT INTO rps_game (date, turns, player, adversary) VALUES (?, ?, ?, ?)"; // TODO - add string content
+            PreparedStatement preparedStatement = connection.prepareStatement(input);
+            preparedStatement.setString(1, date);
+            preparedStatement.setInt(2, turn);
+            preparedStatement.setInt(3, player);
+            preparedStatement.setInt(4, adversary);
+            preparedStatement.executeUpdate();
+        } catch ( SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    private void updateDB_Dice(int bank) {
+    private void updateDB_Dice(double bank) {
         String date = getDate();
         System.out.println("WhiteRectangle: updating table dice_game_highscores.   Date: " + date + " Bank: " + bank);
 
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME)) {
+            String input = "INSERT INTO dice_game_highscores (date, score) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(input);
+            preparedStatement.setString(1, date);
+            preparedStatement.setDouble(2,bank);
+            preparedStatement.executeUpdate();
+        } catch ( SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private String getDate() {
