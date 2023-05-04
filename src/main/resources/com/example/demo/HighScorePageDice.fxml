@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo.HighScorePageDice_Controller"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HighScorePageDice_Controller">
+   <children>
+      <Button fx:id="highScoreButton" layoutX="384.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleHighScoreButtonClick" text="Back to High Scores" />
+      <Button fx:id="mainMenuButton" layoutX="93.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleMainMenuButtonClick" prefHeight="26.0" prefWidth="122.0" text="Back to Main Menu" />
+      <Label layoutX="110.0" layoutY="26.0" text="Dice Game High Scores">
+         <font>
+            <Font name="Brush Script MT Italic" size="48.0" />
+         </font>
+      </Label>
+      <TableView layoutX="154.0" layoutY="100.0" prefHeight="200.0" prefWidth="291.0">
+        <columns>
+          <TableColumn prefWidth="145.5999755859375" text="Date" />
+          <TableColumn prefWidth="145.60003662109375" text="Account Ballance" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>

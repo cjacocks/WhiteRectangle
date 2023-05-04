@@ -11,12 +11,14 @@
             <Font name="Brush Script MT Italic" size="48.0" />
          </font>
       </Label>
-      <Button fx:id="mainMenuButton" layoutX="118.0" layoutY="314.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Return to Main Menu" />
-      <Button layoutX="349.0" layoutY="314.0" mnemonicParsing="false" text="Return to High Scores" />
-      <TableView layoutX="37.0" layoutY="100.0" prefHeight="200.0" prefWidth="560.0">
+      <Button fx:id="mainMenuButton" layoutX="118.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleMainMenuButtonClick" prefHeight="26.0" prefWidth="133.0" text="Return to Main Menu" />
+      <Button fx:id="highScoreButton" layoutX="349.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleHighScoreButtonClick" text="Return to High Scores" />
+      <TableView layoutX="20.0" layoutY="100.0" prefHeight="200.0" prefWidth="560.0">
         <columns>
           <TableColumn prefWidth="138.20001220703125" text="Date" />
           <TableColumn prefWidth="139.39999389648438" text="Number of Turns" />
+            <TableColumn prefWidth="139.39999389648438" text="Player Score" />
+            <TableColumn prefWidth="139.39999389648438" text="Adv Score" />
         </columns>
       </TableView>
    </children>
