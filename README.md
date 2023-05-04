@@ -54,12 +54,14 @@ This is like Rock Paper Scissors™ but not trademarked.
 ### Dice 🎲
 This is a dice betting game. The player is initially given $500. (Mars Dollars™, for copyright reasons)
 They then make a wager, the amount they want to bet, and then make a guess of what the dice will roll.
-Two dice are rolled three times.
-* 1st roll, you win 2x your wager.
-* 2nd roll, you win 1½x your wager.
-* 3rd roll, you win your wager.
-You cannot wager more than you have in the bank, and you must guess between 2 & 12, 
-the possible totals of 2 dice. If the player's bank reaches $0, they start over.
+Two dice are rolled three times. For each roll, the total of the two are added.
+If the player's guess matches the total on the…
+* 1st roll, the player wins 2 times their wager.
+* 2nd roll, the player wins 1½ times their wager.
+* 3rd roll, the player wins their wager.
+
+Players cannot wager more than they have in the bank, and they must guess between 2 & 12, 
+the possible total of 2 6-sided dice. If the player's bank reaches $0, they start over.
 
 ## Contributers
 
