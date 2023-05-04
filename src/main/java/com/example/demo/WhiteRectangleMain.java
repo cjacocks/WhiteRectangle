@@ -13,6 +13,8 @@ import java.sql.Statement;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class WhiteRectangleMain extends Application {
@@ -88,5 +90,20 @@ public class WhiteRectangleMain extends Application {
 
         // Close database connection
         connection.close();
+    }
+
+    private void updateDB_RPS(int turn, int player, int adversary) {
+        String date = getDate();
+    }
+
+    private void updateDB_Dice(int bank) {
+        String date = getDate();
+    }
+
+    private String getDate() {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String formattedDate = currentDate.format(formatter);
+        return formattedDate;
     }
 }
