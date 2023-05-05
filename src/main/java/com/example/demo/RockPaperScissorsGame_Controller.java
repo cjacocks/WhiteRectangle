@@ -62,10 +62,12 @@ public class RockPaperScissorsGame_Controller {
         if (playerScore >= 3) {
             Stage stage = (Stage) paperButton.getScene().getWindow();
             stage.close();
+            WhiteRectangleMain.updateDB_RPS(roundInt, playerScore,adversaryScore);
             displayWin();
         } else if (adversaryScore >= 3) {
             Stage stage = (Stage) paperButton.getScene().getWindow();
             stage.close();
+            WhiteRectangleMain.updateDB_RPS(roundInt, playerScore,adversaryScore);
             displayLose();
         }
     }
@@ -224,6 +226,7 @@ public class RockPaperScissorsGame_Controller {
     }
 
     private void displayWin() {
+
         try {
             Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/RPSGPlayerWin.fxml"));
             Stage newStage = new Stage();

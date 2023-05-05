@@ -4,22 +4,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HighScorePageRPS_Controller">
-   <children>
-      <Label layoutX="134.0" layoutY="30.0" text="Rock Paper Scissors">
-         <font>
-            <Font name="Brush Script MT Italic" size="48.0" />
-         </font>
-      </Label>
-      <Button fx:id="mainMenuButton" layoutX="118.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleMainMenuButtonClick" prefHeight="26.0" prefWidth="133.0" text="Return to Main Menu" />
-      <Button fx:id="highScoreButton" layoutX="349.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleHighScoreButtonClick" text="Return to High Scores" />
-      <TableView layoutX="20.0" layoutY="100.0" prefHeight="200.0" prefWidth="560.0">
-        <columns>
-          <TableColumn prefWidth="138.20001220703125" text="Date" />
-          <TableColumn prefWidth="139.39999389648438" text="Number of Turns" />
-            <TableColumn prefWidth="139.39999389648438" text="Player Score" />
-            <TableColumn prefWidth="139.39999389648438" text="Adv Score" />
-        </columns>
-      </TableView>
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HighScorePageRPS_Controller">
+    <Label layoutX="134.0" layoutY="30.0" text="Rock Paper Scissors">
+        <font>
+          <Font name="Brush Script MT Italic" size="48.0"/>
+        </font>
+    </Label>
+    <Button fx:id="mainMenuButton" layoutX="118.0" layoutY="314.0" mnemonicParsing="false"
+            onAction="#handleMainMenuButtonClick" prefHeight="26.0" prefWidth="133.0" text="Return to Main Menu"/>
+    <Button fx:id="highScoreButton" layoutX="349.0" layoutY="314.0" mnemonicParsing="false"
+            onAction="#handleHighScoreButtonClick" text="Return to High Scores"/>
+    <TableView fx:id="hsTable" layoutX="20.0" layoutY="100.0" prefHeight="200.0" prefWidth="560.0">
+      <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="138.20001220703125" text="Date"/>
+          <TableColumn fx:id="turnColumn" prefWidth="139.39999389648438" text="Number of Turns"/>
+          <TableColumn fx:id="playerColumn" prefWidth="139.39999389648438" text="Player Score"/>
+          <TableColumn fx:id="adversaryColumn" prefWidth="139.39999389648438" text="Adv Score"/>
+      </columns>
+    </TableView>
 </AnchorPane>

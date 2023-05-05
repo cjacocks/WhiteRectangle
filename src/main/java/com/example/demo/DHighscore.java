@@ -3,11 +3,11 @@ package com.example.demo;
 public class DHighscore {
 
     private final String date;
-    private final double bank;
+    private final Double score;
 
-    public DHighscore(String date, double score) {
+    protected DHighscore(String date, Double score) {
         this.date = date;
-        this.bank = score;
+        this.score = score;
     }
 
 
@@ -15,7 +15,7 @@ public class DHighscore {
         return date;
     }
 
-    public double getBank() {
-        return bank;
+    public Double getScore() {
+        return score;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -55,21 +54,22 @@ public class HighScoresPage_Controller {
     private void handleDiceGameButton() {
         Stage currentStage = (Stage) diceGameButton.getScene().getWindow();
         currentStage.close();
-
+        /*
         System.out.println("WhiteRectangle: run table update");
+
         Platform.runLater(() -> {
             new HighScorePageDice_Controller().setHighscoresTable();
         });
         System.out.println("WhiteRectangle: done");
+        */
         System.out.println("WhiteRectangle: run dice page");
+
         try {
             Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/HighScorePageDice.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(mainMenuPage));
             stage.show();
-            System.out.println("Lets goooo");
         } catch (IOException e) {
-            System.out.println("Nope");
             e.printStackTrace();
         }
 

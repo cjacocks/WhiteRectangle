@@ -5,19 +5,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 
-public class HighScorePageDice_Controller extends WhiteRectangleMain {
-    // TODO -- Make Table go brrr
+public class HighScorePageDice_Controller extends WhiteRectangleMain implements Initializable {
 
     @FXML
     private TableView<DHighscore> diceTable = new TableView<>();
@@ -79,17 +82,32 @@ public class HighScorePageDice_Controller extends WhiteRectangleMain {
                 String date = resultSet.getString("date");
                 double score = resultSet.getDouble("score");
                 highscores.add(new DHighscore(date, score));
-                diceTable.setItems(highscores);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("We made it this far");
         Platform.runLater(() -> {
             diceTable.setItems(highscores);
         });
 
-        System.out.println("Huzzah");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        acctColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
+        acctColumn.setCellFactory(tc -> new TableCell<DHighscore, Double>() {
+            @Override
+            protected void updateItem(Double score, boolean empty) {
+                super.updateItem(score, empty);
+                if (empty) {
+                    setText("");
+                } else {
+                    setText(String.format("%.2f", score));
+                }
+            }
+        });
+        setHighscoresTable();
     }
 }
 
