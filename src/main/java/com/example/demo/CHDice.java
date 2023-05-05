@@ -33,6 +33,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.Objects;
 
 // ══════════ GUI ══════════
 
@@ -259,7 +260,7 @@ public class CHDice extends Application {
             currentStage.close();
 
             try { // Opens Main Menu. Requires FXML.
-                Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+                Parent mainMenuPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml")));
                 Stage newStage = new Stage();
                 newStage.setScene(new Scene(mainMenuPage));
                 newStage.show();

@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HighScoresPage_Controller {
 
@@ -26,7 +27,7 @@ public class HighScoresPage_Controller {
         currentStage.close();
 
         try {
-            Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+            Parent mainMenuPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml")));
             Stage stage = new Stage();
             stage.setScene(new Scene(mainMenuPage));
             stage.show();
@@ -41,7 +42,7 @@ public class HighScoresPage_Controller {
         currentStage.close();
 
         try {
-            Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/HighScorePageRPS.fxml"));
+            Parent mainMenuPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/HighScorePageRPS.fxml")));
             Stage stage = new Stage();
             stage.setScene(new Scene(mainMenuPage));
             stage.show();
@@ -54,18 +55,10 @@ public class HighScoresPage_Controller {
     private void handleDiceGameButton() {
         Stage currentStage = (Stage) diceGameButton.getScene().getWindow();
         currentStage.close();
-        /*
-        System.out.println("WhiteRectangle: run table update");
-
-        Platform.runLater(() -> {
-            new HighScorePageDice_Controller().setHighscoresTable();
-        });
-        System.out.println("WhiteRectangle: done");
-        */
         System.out.println("WhiteRectangle: run dice page");
 
         try {
-            Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/HighScorePageDice.fxml"));
+            Parent mainMenuPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/HighScorePageDice.fxml")));
             Stage stage = new Stage();
             stage.setScene(new Scene(mainMenuPage));
             stage.show();

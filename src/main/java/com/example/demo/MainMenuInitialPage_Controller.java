@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainMenuInitialPage_Controller {
 
@@ -31,7 +32,7 @@ public class MainMenuInitialPage_Controller {
 
         // Runs the New Game Menu
         try {
-            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuNewGamePage.fxml"));
+            Parent newGamePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenuNewGamePage.fxml")));
             Stage stage = new Stage();
             stage.setScene(new Scene(newGamePage));
             stage.show();
@@ -51,7 +52,7 @@ public class MainMenuInitialPage_Controller {
         stage.close();
         // TODO - Still need to add DB things and make it work.
         try {
-            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/HighScoresPage.fxml"));
+            Parent newGamePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/HighScoresPage.fxml")));
             Stage newStage = new Stage();
             newStage.setScene(new Scene(newGamePage));
             newStage.show();

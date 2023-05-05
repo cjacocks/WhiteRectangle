@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class C4GP2Wins_Controller {
     @FXML
@@ -19,7 +20,7 @@ public class C4GP2Wins_Controller {
         currentStage.close();
 
         try {
-            Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+            Parent mainMenuPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml")));
             Stage stage = new Stage();
             stage.setScene(new Scene(mainMenuPage));
             stage.show();

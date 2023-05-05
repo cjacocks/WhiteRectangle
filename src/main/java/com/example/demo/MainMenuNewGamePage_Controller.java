@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainMenuNewGamePage_Controller {
 
@@ -36,9 +37,7 @@ public class MainMenuNewGamePage_Controller {
         Stage currentStage = (Stage) connectFourButton.getScene().getWindow();
         currentStage.close();
 
-        Platform.runLater(() -> {
-            new Connect4Game().start(new Stage());
-        });
+        Platform.runLater(() -> new Connect4Game().start(new Stage()));
     }
 
     @FXML
@@ -47,7 +46,7 @@ public class MainMenuNewGamePage_Controller {
         currentStage.close();
 
         try {
-            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/TicTacToe_GameScreen.fxml"));
+            Parent newGamePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/TicTacToe_GameScreen.fxml")));
             Stage newStage = new Stage();
             newStage.setScene(new Scene(newGamePage));
             newStage.show();
@@ -74,7 +73,7 @@ public class MainMenuNewGamePage_Controller {
         -- Chris
          */
         try {
-            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/RockPaperScissorsGame.fxml"));
+            Parent newGamePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/RockPaperScissorsGame.fxml")));
             Stage newStage = new Stage();
             newStage.setScene(new Scene(newGamePage));
             newStage.show();
@@ -88,22 +87,20 @@ public class MainMenuNewGamePage_Controller {
         Stage currentStage = (Stage) diceGameButton.getScene().getWindow();
         currentStage.close();
 
-        Platform.runLater(() -> {
-            new CHDice().start(new Stage());
-        });
+        Platform.runLater(() -> new CHDice().start(new Stage()));
     }
 
     @FXML
     private void handleGoBackButtonClick() {
         /*
         When triggered, takes the user make to the main menu. Not that there is much there. If only we had time to sort
-        out fucking save game states. Oh well.
+        out fucking save game states. Oh, well.
          */
         Stage currentStage = (Stage) goBackButton.getScene().getWindow();
         currentStage.close();
 
         try {
-            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+            Parent newGamePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml")));
             Stage newStage = new Stage();
             newStage.setScene(new Scene(newGamePage));
             newStage.show();
@@ -117,8 +114,6 @@ public class MainMenuNewGamePage_Controller {
         Stage currentStage = (Stage) memoryGameButton.getScene().getWindow();
         currentStage.close();
 
-        Platform.runLater(() -> {
-            new MemoryGame().start(new Stage());
-        });
+        Platform.runLater(() -> new MemoryGame().start(new Stage()));
     }
 }

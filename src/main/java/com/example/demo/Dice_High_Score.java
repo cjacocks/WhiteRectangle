@@ -1,11 +1,11 @@
 package com.example.demo;
 
-public class DHighscore {
+public class Dice_High_Score {
 
     private final String date;
     private final Double score;
 
-    protected DHighscore(String date, Double score) {
+    protected Dice_High_Score(String date, Double score) {
         this.date = date;
         this.score = score;
     }

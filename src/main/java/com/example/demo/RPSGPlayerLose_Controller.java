@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class RPSGPlayerLose_Controller {
 
@@ -21,7 +22,7 @@ public class RPSGPlayerLose_Controller {
 
         try {
 
-            Parent newGamePage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+            Parent newGamePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml")));
             Stage newStage = new Stage();
             newStage.setScene(new Scene(newGamePage));
             newStage.show();

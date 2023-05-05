@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HighScorePageRPS_Controller extends WhiteRectangleMain implements Initializable {
@@ -46,7 +47,7 @@ public class HighScorePageRPS_Controller extends WhiteRectangleMain implements I
         currentStage.close();
 
         try {
-            Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml"));
+            Parent mainMenuPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenuInitialPage.fxml")));
             Stage stage = new Stage();
             stage.setScene(new Scene(mainMenuPage));
             stage.show();
@@ -61,7 +62,7 @@ public class HighScorePageRPS_Controller extends WhiteRectangleMain implements I
         currentStage.close();
 
         try {
-            Parent mainMenuPage = FXMLLoader.load(getClass().getResource("/com/example/demo/HighScoresPage.fxml"));
+            Parent mainMenuPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/HighScoresPage.fxml")));
             Stage stage = new Stage();
             stage.setScene(new Scene(mainMenuPage));
             stage.show();
@@ -84,7 +85,7 @@ public class HighScorePageRPS_Controller extends WhiteRectangleMain implements I
                 int adv = resultSet.getInt("adversary");
 
                 if (WhiteRectangleMain.debugRPS) {
-                    System.out.println("Dbug: date: " + date + " turn: " + turn + " player: " + player + " adv: " + adv);
+                    System.out.println("Debug: date: " + date + " turn: " + turn + " player: " + player + " adv: " + adv);
                 }
 
                 highScores.add(new RHighScore(date, turn, player, adv));
@@ -93,9 +94,7 @@ public class HighScorePageRPS_Controller extends WhiteRectangleMain implements I
             System.out.println(e.getMessage());
         }
 
-        Platform.runLater(() -> {
-            hsTable.setItems(highScores);
-        });
+        Platform.runLater(() -> hsTable.setItems(highScores));
     }
 
     @Override
